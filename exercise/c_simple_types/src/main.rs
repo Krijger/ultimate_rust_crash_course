@@ -1,7 +1,7 @@
 // Silence some warnings so they don't distract from the exercise.
 #![allow(dead_code, unused_variables)]
 
-use ding_machine::{ding, print_array, print_difference, on_off};
+use ding_machine::{ding, print_array, print_difference, print_distance, on_off};
 
 fn main() {
     let coords: (f32, f32) = (6.3, 15.0);
@@ -20,5 +20,5 @@ fn main() {
     // output. Then go refactor the print_distance() function according to the
     // instructions in the comments inside that function.
 
-    // print_distance(coords);
+    print_distance(coords);
 }
