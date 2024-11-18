@@ -3,14 +3,7 @@
 
 fn main() {
     let coords: (f32, f32) = (6.3, 15.0);
-    // 1. Pass parts of `coords` to the `print_difference` function. This should show the difference
-    // between the two numbers in coords when you do `cargo run`.  Use tuple indexing.
-    //
-    // The `print_difference` function is defined below the `main` function. It may help if you look
-    // at how it is defined.
-    //
-    //print_difference( ... );   // Uncomment and finish this line
-
+    print_difference(coords.0, coords.1);
 
     // 2. We want to use the `print_array` function to print coords...but coords isn't an array!
     // Create an array of type [f32; 2] and initialize it to contain the
