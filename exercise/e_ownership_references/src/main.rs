@@ -14,16 +14,11 @@ fn main() {
     change(&mut arg);
     println!("I have many {}", arg);
 
-    // 3. Write a function `eat` that accepts ownership of (consumes) a String and returns a bool
-    // indicating whether or not the String both starts with a "b" AND contains an "a".
-    // Hint 1: use `.starts_with("b")` and `.contains("a")`
-    // Hint 2: `&&` is the boolean "AND" operator
-    //
-    //if eat(arg) {
-    //    println!("Might be bananas");
-    //} else {
-    //    println!("Not bananas");
-    //}
+    if eat(arg) {
+       println!("Might be bananas");
+    } else {
+       println!("Not bananas");
+    }
 
     // Try running this program with "boat", "banana", and "grapes" as the arguments :-)
 
@@ -53,4 +48,8 @@ fn change(s: &mut String) {
     if !s.ends_with("s")  {
         s.push_str("s")
     }
+}
+
+fn eat(s: String) -> bool {
+    s.starts_with("b") && s.contains("a")
 }
