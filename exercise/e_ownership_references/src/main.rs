@@ -20,19 +20,10 @@ fn main() {
        println!("Not bananas");
     }
 
-    // Try running this program with "boat", "banana", and "grapes" as the arguments :-)
-
-    // Challenge: Write a function "bedazzle" that takes a mutable reference to a String and
-    // ignores what is in the string and replaces the contents of the string with the String
-    // "sparkly". Then uncomment the code below.
-    //
-    // Hint: You will need to dereference the mutable reference in order to assign it a
-    // new value.
-    //
-    // let mut material = "mud".to_string();
-    // println!("This material is just `{}`.", material);
-    // bedazzle(&mut material);
-    // println!("Wow! Now the material is `{}`!", material);
+    let mut material = "mud".to_string();
+    println!("This material is just `{}`.", material);
+    bedazzle(&mut material);
+    println!("Wow! Now the material is `{}`!", material);
 }
 
 fn inspect(s: &String) {
@@ -52,4 +43,8 @@ fn change(s: &mut String) {
 
 fn eat(s: String) -> bool {
     s.starts_with("b") && s.contains("a")
+}
+
+fn bedazzle(s: &mut String) {
+    *s = String::from("sparkly");
 }
