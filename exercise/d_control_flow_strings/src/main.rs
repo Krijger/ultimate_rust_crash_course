@@ -26,7 +26,10 @@ fn main() {
 
 fn sum() {
     let mut sum = 0;
-    sum = (7..24).sum();
+    for i in 7..24 {
+        sum += i;
+    }
+    // sum = (7..24).sum();
     println!("The sum is {}", sum);
 }
 
