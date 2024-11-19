@@ -1,10 +1,6 @@
-// 1. Define a trait named `Bite`
-//
-// Define a single required method, `fn bite(self: &mut Self)`.  We will call this method when we
-// want to bite something.  Once this trait is defined, you should be able to run the program with
-// `cargo run` without any errors.
-//
-//  trait Bite...
+ trait Bite {
+    fn bite(self: &mut Self);
+ }
 
 
 // 2. Now create a struct named Grapes with a field that tracks how many grapes are left.  If you
