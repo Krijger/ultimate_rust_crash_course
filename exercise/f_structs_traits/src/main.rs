@@ -15,15 +15,14 @@ fn main() {
     grapes.bite();
     println!("Eat a grape: {:?}", grapes);
 
-    // Challenge: Uncomment the code below. Create a generic `bunny_nibbles`
-    // function that:
-    // - takes a mutable reference to any type that implements Bite
-    // - calls `.bite()` several times
-    // Hint: Define the generic type between the function name and open paren:
-    //       fn function_name<T: Bite>(...)
-    //
-    //bunny_nibbles(&mut carrot);
-    //println!("Bunny nibbles for awhile: {:?}", carrot);
+    bunny_nibbles(&mut carrot);
+    println!("Bunny nibbles for awhile: {:?}", carrot);
+}
+
+fn bunny_nibbles<T : Bite>(bite_me: &mut T) {
+    for _ in 1..4 {
+        bite_me.bite();
+    }
 }
 
 #[derive(Debug)]
