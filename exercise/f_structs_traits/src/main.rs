@@ -1,5 +1,5 @@
 trait Bite {
-    fn bite(self: &mut Self);
+    fn bite(&mut self);
 }
 
 fn main() {
@@ -32,7 +32,7 @@ struct Grapes {
 }
 
 impl Bite for Grapes {
-    fn bite(self: &mut Self) {
+    fn bite(&mut self) {
         self.grapes_left -= 1;
     }
 }
@@ -43,7 +43,7 @@ struct Carrot {
 }
 
 impl Bite for Carrot {
-    fn bite(self: &mut Self) {
+    fn bite(&mut self) {
         // Eat 20% of the remaining carrot. It may take awhile to eat it all...
         self.percent_left *= 0.8;
     }
