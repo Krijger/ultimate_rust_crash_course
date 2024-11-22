@@ -94,5 +94,31 @@ fn main() {
     // On the child threads print out the values you receive. Close the sending side in the main
     // thread by calling `drop(tx)` (assuming you named your sender channel variable `tx`).  Join
     // the child threads.
+    let (tx, rx) = channel::unbounded();
+    let rx2 = rx.clone();
+
+    let handle_a = thread::spawn(move || {
+        for i in rx {
+            println!("Received value {} in thread A", i);
+            pause_ms(200);
+        }
+    });
+
+    let handle_b = thread::spawn(move || {
+        for i in rx2 {
+            println!("Received value {} in thread B", i);
+            pause_ms(200);
+        }
+    });
+
+    for i in 1..10 {
+        println!("Sending {} into the channel", i);
+        tx.send(i).unwrap();
+    }
+    drop(tx);
+    
+    handle_a.join().unwrap();
+    handle_b.join().unwrap();
+
     println!("Main thread: Exiting.")
 }
