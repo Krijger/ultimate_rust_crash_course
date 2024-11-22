@@ -11,14 +11,9 @@ impl Shot {
     fn points(self) -> i32 {
         match self {
             Self::Bullseye => 5,
+            Self::Hit{distance: x} if x < 3.0 => 2,
+            Self::Hit{distance: _} => 1,
             Self::Miss => 0,
-            Self::Hit{distance: x} => {
-                if x < 3.0 {
-                    2
-                } else {
-                    1
-                }
-            },
         }
     }
 }
