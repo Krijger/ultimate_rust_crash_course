@@ -23,18 +23,21 @@ fn main() {
     let arrow_coords: Vec<Coord> = get_arrow_coords(5);
     let mut shots: Vec<Shot> = Vec::new();
 
-    // 2. For each coord in arrow_coords:
-    //
-    //   A. Call `coord.print_description()`
-    //   B. Append the correct variant of `Shot` to the `shots` vector depending on the value of
-    //   `coord.distance_from_center()`
-    //      - Less than 1.0 -- `Shot::Bullseye`
-    //      - Between 1.0 and 5.0 -- `Shot::Hit(value)`
-    //      - Greater than 5.0 -- `Shot::Miss`
+    for coord in arrow_coords {
+        let dist = coord.distance_from_center();
+        let shot = match dist {
+            _ if dist < 1.0 => Shot::Bullseye,
+            _ if dist < 5.0 => Shot::Hit { distance: dist },
+            _ => Shot::Miss,
 
+        };
+        shots.push(shot);
+    }
 
     let mut total = 0;
-    // 3. Finally, loop through each shot in shots and add its points to total
+    for shot in shots {
+        total += shot.points();
+    }
 
     println!("Final point total is: {}", total);
 }
